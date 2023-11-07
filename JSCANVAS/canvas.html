@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="500" style="border: 1px solid black"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+
+        function createDom(x, y, r, color){
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(x, y, r, Math.PI, 2 * Math.PI);
+            ctx.lineWidth = r / 10;
+            ctx.fill();
+            ctx.stroke();
+        }
+
+        createDom(canvas.width / 2 - (2 * 100), canvas.height / 2 - 100, 35, "green");
+        createDom(canvas.width / 2, canvas.height / 2, 100, "pink");
+        createDom(canvas.width / 2 + (2 * 100), canvas.height / 2 - 100, 35, "green");
+
+        function createWall(x, y, w, h, color){
+            ctx.beginPath();
+            ctx.rect(x, y, w, h);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.lineWidth = 10;
+             ctx.stroke();
+            ctx.fill();
+        }
+
+        createWall(canvas.width / 2 - 100, canvas.height / 2, 200, 200, "aqua");
+        createWall(canvas.width / 2 + 100, canvas.height / 2, 150, 200, "violet");
+        createWall(canvas.width / 2 - 100 - 150, canvas.height / 2, 150, 200, "violet");
+        createWall(canvas.width / 2 - (2 * 100) - 33, canvas.height / 2 - 100, (2 * 33), 95, "yellow");
+        createWall(canvas.width / 2 + (2 * 100) - 33, canvas.height / 2 - 100, (2 * 33), 95, "yellow");
+        
+        function createDoor (x, y, width, height, color){
+            createWall(x - 2 * 25, y / 2 + 100, width, height, color);
+            createDom(x , y / 2 + 100, width / 2, height / 2, color);
+        }
+
+        createDoor(canvas.width / 2, canvas.height, 100, 100, "grey");
+        createDoor(canvas.width / 2 + 2 * 90, canvas.height, 100, 100, "blue");
+        createDoor(canvas.width / 2 - 2 * 90, canvas.height, 100, 100, "blue");
+
+        ctx.fillStyle = "black";
+        ctx.font = '17px Arial';
+        ctx.fillText("Masjid Assaqinah", canvas.width / 2 - 50, canvas.height / 2 + 34, 100);
+        
+        createWall(canvas.width / 2 - 200 - 76, canvas.height / 2 + 209, 550, 12, 'orange');
+        createWall(canvas.width / 2 - 200 - 81, canvas.height / 2 + 220, 559, 6, 'orange');
+
+        canvas.style.backgroundColor = 'skyblue';
+
+        
+
+        
+    </script>
+</body>
+</html>
